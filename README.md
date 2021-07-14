@@ -38,4 +38,60 @@ The binding uses the following configuration parameters.
 | userStatus      | Number             | This indicates the status of the user (-1=undefined, 1=enabled, 0= disabled) | 0,1,-1                                          |
 
 ## Examples
-tbd.
+
+demo.items
+```
+Number UserID "Last user that accessed the house was [MAP(ekey_names.map):%d]" { channel="....userid" }
+Number FingerID "User used finger [MAP(ekey_finger.map):%d]"                   { channel="....fingerid" }
+Number TerminalID "Last used terminal [MAP(ekey_terminal.map):%d]"             { channel="....terminalid" }
+Number Action "Last action [MAP(ekey_action.map):%d]"                          { channel=".....action" }
+
+```
+
+transform/ekey_finger.map [This is just an example, as there is no strict rule what finger belongs to what number]
+
+```javascript
+0=leftlittle
+1=leftring
+2=leftmiddle
+3=leftindex
+4=leftthumb
+5=rightthumb
+6=rightindex
+7=rightmiddle
+8=rightring
+9=rightlittle
+0=unknown
+-1=unknown
+```
+
+transform/ekey_names.map [NO spaces allowed]
+```javascript
+-1=Unspecified
+1=JohnDoe
+2=JaneDoe
+```
+transform/ekey_terminal.map
+```javascript
+80156839130911=Front
+80156839130914=Back
+```
+transform/ekey_multi_action.map
+```javascript
+0=granted
+-1=rejected
+1=timeoutA
+2=timeoutB
+3=inactive
+4=alwaysuser
+5=notcoupled
+6=digitalinput
+```
+transform/ekey_rare_action.map
+```javascript
+136=granted
+137=rejected
+```
+
+
+
